@@ -1,0 +1,32 @@
+<%= form_with(model: @event, local: true, url: choose_new_or_edit) do |form| %>
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @event.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="event_title">
+  <%= form.label :イベント名 %>
+  <%= form.text_field :title %>
+</div>
+<div class="event_title">
+  <%= form.label :日時 %>
+  <%= form.text_field :date %>
+</div>
+<div class="event_title">
+  <%= form.label :場所 %>
+  <%= form.text_field :place %>
+</div>
+<div class="event_title">
+  <%= form.label :イベント内容 %>
+  <%= form.text_field :content %>
+</div>
+<%= form.submit %>
+<% end %>
+
+<%= link_to "イベント一覧画面に戻る", events_path %>

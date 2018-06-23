@@ -1,0 +1,14 @@
+<h1>イベント詳細</h1>
+<p><%= notice %></p>
+<p>イベント名:<%= @event.title %></p>
+<p>日時:<%= @event.date %></p>
+<p>場所:<%= @event.place %></p>
+<p>イベント内容:<%= @event.content %></p>
+
+<% unless @event.user == current_user %>
+  <% if @participant_management.present? %>
+    <%= link_to "イベント参加をキャンセルする", participant_management_path(id: @event.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'イベントに参加する', participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

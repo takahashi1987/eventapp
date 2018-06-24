@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
-  validates :title, :date, :place, :content, presence: true
+  validates :title, :date, :place, presence: true, length: { maximum: 50 }
+  validates :content, presence: true, length: { maximum: 255 }
 
   belongs_to :user
   has_many :participant_managements, dependent: :destroy

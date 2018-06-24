@@ -11,8 +11,8 @@
     <% @events.each do |event| %>
     <tbody>
       <tr>
-        <td><%= event.title %></td>
-        <td><%= event.content %></td>
+        <td><%= event.title.truncate(10) %></td>
+        <td><%= event.content.truncate(30) %></td>
         <td><%= link_to "イベントの詳細を確認する", event_path(event.id) %></td>
         <% if logged_in? && event.user_id == current_user.id %>
             <td><%= link_to "イベントを編集する", edit_event_path(event.id) %></td>

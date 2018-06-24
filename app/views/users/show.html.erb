@@ -1,2 +1,10 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<h1>参加イベント一覧</h1>
+<% @user.participant_managements.each do |participation| %>
+  <%= participation.event.title %><br>
+<% end %>
+<h1>企画イベント一覧</h1>
+<% @user.events.each do |plan| %>
+  <%= plan.title %><br>
+<% end %>

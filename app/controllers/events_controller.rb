@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :user_logged_in, only: [:new, :edit, :update, :destroy]
+  before_action :user_logged_in, only: [:new, :show, :edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.page(params[:page]).per(3)
   end
 
   def show
